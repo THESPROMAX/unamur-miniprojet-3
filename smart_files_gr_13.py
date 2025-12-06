@@ -50,6 +50,22 @@ def move_file(fname: str, category: str, dir: str = 'archive') -> None:
         os.mkdir(path_to_category)
     os.rename(path_to_file, path_to_new_file)
 
+def create_category_dir(subjects: list):
+    """Creates a directory for a category in the sorted folder.
+
+    Parameters
+    ----------
+    category : the list containing subjects.
+    -----------
+    Raises
+    ------
+    ValueError
+        if the category directory already exists .
+    """
+    for category in categories:
+        if not os.path.exists(f'Archive/sorted/{category}'):
+            os.mkdir(f'Archive/sorted/{category}')
+            
 def move_all(info: dict[str, str], dir: str = 'archive') -> None:
     """Moves all files from ./archive/unsorted into ./archive/sorted by using info in ``info`` dict.
 
