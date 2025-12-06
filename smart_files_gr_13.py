@@ -22,7 +22,24 @@ def word_frequency(string: str) -> dict[str, int]:
     for word in words:
         ret[word] = ret.get(word, 0) + 1
     return ret
+    
+def prob_words(string:str)->dict:
+    """this function calculates the probability of words in a string
+    -----------
+    parameters:
+    string(str):the string to calculate the probability
+    -----------
+    return: a dictionary with the structure of {'word': probability}
 
+    """
+    words=string.split()
+    total_words=len(words)
+    freq=word_frequency(string)
+    prob={}
+    for word in freq:
+        prob[word]=freq[word]/total_words
+    return prob
+    
 def move_file(fname: str, category: str, dir: str = 'archive') -> None:
     """Moves a file from the unsorted directory to the sorted directory into the specified category.
 
